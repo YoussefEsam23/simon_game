@@ -34,7 +34,7 @@ function nextSequence ()
     playSound(randomChosenColour);
     
     level++;
-    $("#level-title").text("level" + level);
+    $("#level-title").text("level  " + level);
 }
 
 function startOver()
