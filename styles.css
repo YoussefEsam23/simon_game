@@ -17,12 +17,10 @@ body {
 
 }
 
-/*deepseek*/
 .btn {
     transition: all 0.15s ease-out;
 }
 
-/*deepseek*/
 .btn {
     transform: translateZ(0);
     backface-visibility: hidden;
@@ -38,7 +36,6 @@ body {
   border-radius: 20%;
 }
 
-/*deepseek*/
 .btn.active { 
     transform: scale(0.95);
     opacity: 0.8;
@@ -68,7 +65,7 @@ body {
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
-  transition: all 0.1s ease-out; /*deepseek*/
+  transition: all 0.1s ease-out;
 }
 
 .start_button
