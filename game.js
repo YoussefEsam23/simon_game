@@ -1,16 +1,26 @@
 var buttonColors = ["red", "blue", "green", "yellow"];
 var gamePattern = [];
 var userPattern = [];
+var audioFiles = {};
 var randomChosenColour = "";
 var randomNumber = 0;
 var userChosenColour = "";
 var level = 0;
 var started = false;
 
+function preloadAudio() {
+    buttonColors.forEach(color => {
+        audioFiles[color] = new Audio("sounds/" + color + ".mp3");
+    });
+    audioFiles['wrong'] = new Audio("sounds/wrong.mp3");
+}
+
 function playSound(name)
 {
-    var audio = new Audio("sounds/" + name + ".mp3");
-    audio.play();
+    audioFiles[name].currentTime = 0;
+    audioFiles[name].play();
+    /*var audio = new Audio("sounds/" + name + ".mp3");
+    audio.play();*/
 }
 
 function animatepress(current_color)
@@ -28,11 +38,16 @@ function nextSequence ()
     randomNumber = Math.floor(Math.random()*4);
     randomChosenColour = buttonColors[randomNumber];
     gamePattern.push(randomChosenColour);
-    $("#" + randomChosenColour).fadeIn(100) // Stop any current animations and jump to end
+    /*$("#" + randomChosenColour).fadeIn(100) // Stop any current animations and jump to end
                                .fadeOut(100) // Quickly fade out
-                               .fadeIn(100); // Quickly fade in
+                               .fadeIn(100); // Quickly fade in*/
+
+    // Optimized animation using CSS classes
+    const $element = $("#" + randomChosenColour);
+    $element.addClass("active");
+    setTimeout(() => $element.removeClass("active"), 150);
+
     playSound(randomChosenColour);
-    
     level++;
     $("#level-title").text("level  " + level);
 }
@@ -94,4 +109,9 @@ $(".btn").click(function() {
         checkAnswer(userPattern.length-1);
 
     }
+});
+
+// Initialize audio preload when document is ready
+$(document).ready(function() {
+    preloadAudio();
 });

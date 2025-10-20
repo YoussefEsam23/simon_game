@@ -17,6 +17,18 @@ body {
 
 }
 
+/*deepseek*/
+.btn {
+    transition: all 0.15s ease-out;
+}
+
+/*deepseek*/
+.btn {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
 .btn {
   margin: 25px;
   display: inline-block;
@@ -24,6 +36,12 @@ body {
   width: 200px;
   border: 10px solid black;
   border-radius: 20%;
+}
+
+/*deepseek*/
+.btn.active { 
+    transform: scale(0.95);
+    opacity: 0.8;
 }
 
 .game-over {
@@ -50,6 +68,7 @@ body {
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
+  transition: all 0.1s ease-out; /*deepseek*/
 }
 
 .start_button
